@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education Tools</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+        }
+        
+        h1 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .project-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-card h2 {
+            color: #0056b3;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .project-link:hover {
+            background-color: #0056b3;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Financial Education Tools</h1>
+        <p>Interactive web applications for learning financial concepts</p>
+    </header>
+    
+    <main>
+        <div class="project-card">
+            <h2>Interactive Accounting Equation</h2>
+            <p>Explore the fundamental accounting equation (Assets = Liabilities + Equity) through an interactive interface. This tool allows you to:</p>
+            <ul>
+                <li>Adjust financial values using sliders</li>
+                <li>Visualize how the accounting equation remains balanced</li>
+                <li>Simulate common business transactions</li>
+                <li>Track changes through a transaction log</li>
+            </ul>
+            <p>Perfect for students learning basic accounting principles or anyone interested in understanding financial statements.</p>
+            <a href="accounting-equation.html" class="project-link">Launch Interactive Accounting Equation</a>
+        </div>
+        
+        <!-- Placeholder for future tools -->
+        <div class="project-card">
+            <h2>Coming Soon: More Financial Tools</h2>
+            <p>We're working on additional educational resources for financial learning:</p>
+            <ul>
+                <li>Income Statement Builder</li>
+                <li>Cash Flow Statement Simulator</li>
+                <li>Financial Ratio Calculator</li>
+            </ul>
+            <p>Check back soon for updates!</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>These educational tools are designed for learning purposes only. Always consult with a qualified financial professional for actual accounting advice.</p>
+        <p>&copy; <span id="current-year"></span> Financial Education Tools</p>
+        <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
