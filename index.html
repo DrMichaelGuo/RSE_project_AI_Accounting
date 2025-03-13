@@ -3,114 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Education Tools</title>
+    <title>AI in Accounting Research Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #0071e3;
+            --secondary-color: #06c;
+            --accent-color: #2997ff;
+            --text-color: #1d1d1f;
+            --light-text: #86868b;
+            --background-color: #ffffff;
+            --section-bg: linear-gradient(150deg, #f5f5f7 0%, #fafafa 100%);
+            --border-color: #d2d2d7;
+            --ease-out-quad: cubic-bezier(0.5, 1, 0.89, 1);
+        }
+
+        header {
+            background: var(--section-bg);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 120%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(41,151,255,0.08) 0%, rgba(255,255,255,0) 100%);
+            transform: rotate(-15deg);
+            z-index: 0;
+            animation: float 20s infinite linear;
+        }
+
+        h1 {
+            font-size: 52px;
+            letter-spacing: -0.028em;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .grant-info {
+            background-color: rgba(0,113,227,0.1);
+            color: var(--primary-color);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0,113,227,0.15);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-quad) forwards;
+        }
+
+        .key-areas {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .area-card {
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.04);
+            transform: translateY(0);
+            transition: all 0.4s var(--ease-out-quad);
+        }
+
+        .area-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-image {
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s var(--ease-out-quad);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .area-card, .profile-image {
+                transition: none;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        header {
+            background: var(--section-bg);
+            color: var(--text-color);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .header-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
         }
-        
-        header {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-            border-bottom: 3px solid #007bff;
-        }
-        
+
         h1 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        
-        .project-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
+            font-size: 48px;
+            font-weight: 600;
             margin-bottom: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
         }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .project-card h2 {
-            color: #0056b3;
-            margin-top: 0;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        
-        .project-link {
+
+        .grant-info {
             display: inline-block;
-            background-color: #007bff;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 15px;
-            transition: background-color 0.2s ease;
+            padding: 8px 16px;
+            border-radius: 18px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            font-size: 14px;
+            letter-spacing: -0.01em;
         }
-        
-        .project-link:hover {
-            background-color: #0056b3;
+
+        section {
+            padding: 100px 0;
         }
-        
-        footer {
-            margin-top: 40px;
+
+        section:nth-child(even) {
+            background-color: var(--section-bg);
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--text-color);
             text-align: center;
-            font-size: 0.9em;
-            color: #666;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: var(--light-text);
+            letter-spacing: -0.022em;
+        }
+
+        .key-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .area-card {
+            background-color: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .area-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+        }
+
+        .methodology {
+            background-color: white;
+            border-radius: 18px;
+            padding: 50px;
+            margin-top: 60px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        .methodology p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pi-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            text-align: center;
+        }
+
+        .pi-image {
+            flex: 0 0 auto;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .pi-info {
+            flex: 1 1 300px;
+        }
+
+        .pi-info h3 {
+            font-size: 24px;
+            color: var(--text-color);
+            margin-bottom: 5px;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+        }
+
+        .pi-info p {
+            color: var(--light-text);
+            font-size: 17px;
+        }
+
+        footer {
+            background-color: var(--section-bg);
+            color: var(--light-text);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .key-areas {
+                grid-template-columns: 1fr;
+            }
+            
+            .methodology {
+                padding: 30px;
+            }
+        }
+        
+        /* Apple-style button animation */
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.02);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Accounting Education Tools</h1>
-        <p>Dr Michael Guo</p>
+        <div class="container header-content">
+            <div class="grant-info">Royal Society of Edinburgh Small Research Grant</div>
+            <h1>The Impact of Artificial Intelligence on the Future of Accounting in the UK</h1>
+            <p>An Investigation into Evolving Roles and Ethical Challenges</p>
+        </div>
     </header>
-    
-    <main>
-        <div class="project-card">
-            <h2>Interactive Accounting Equation</h2>
-            <p>Explore the fundamental accounting equation (Assets = Liabilities + Equity) through an interactive interface. This tool allows you to:</p>
-            <ul>
-                <li>Adjust financial values using sliders</li>
-                <li>Visualize how the accounting equation remains balanced</li>
-                <li>Simulate common business transactions</li>
-                <li>Track changes through a transaction log</li>
-            </ul>
-            <p>Perfect for students learning basic accounting principles or anyone interested in understanding financial statements.</p>
-            <a href="accounting-equation.html" class="project-link">Launch Interactive Accounting Equation</a>
+
+    <section id="principal-investigator">
+        <div class="container">
+            <div class="pi-container">
+                <div class="pi-image">
+                    <img src="https://research-portal.uws.ac.uk/files-asset/54620054/Photo_Michael_Guo_Circle.png?w=320&f=webp" alt="Dr. Michael Guo" class="profile-image">
+                </div>
+                <div class="pi-info">
+                    <h2>Principal Investigator</h2>
+                    <h3>Dr. Michael Guo</h3>
+                    <p>University of the West of Scotland, UK</p>
+                </div>
+            </div>
         </div>
-        
-        <!-- Placeholder for future tools -->
-        <div class="project-card">
-            <h2>Coming Soon: More Financial Tools</h2>
-            <p>We're working on additional educational resources for financial learning:</p>
-            <ul>
-                <li>Income Statement Builder</li>
-                <li>Cash Flow Statement Simulator</li>
-                <li>Financial Ratio Calculator</li>
-            </ul>
-            <p>Check back soon for updates!</p>
+    </section>
+
+    <section id="summary">
+        <div class="container">
+            <h2>Research Summary</h2>
+            <p>
+                This research aims to examine the transformative impact of Artificial Intelligence (AI) on the UK's accounting sector. 
+                Employing a mixed-methods approach, the research addresses a knowledge gap in empirical studies by investigating 
+                the first-hand experiences of accounting professionals navigating this technological shift.
+            </p>
+            
+            <div class="key-areas">
+                <div class="area-card">
+                    <h3>Operational Efficiency</h3>
+                    <p>Investigating how AI technologies are enhancing productivity and streamlining accounting processes in UK firms.</p>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Skill Set Evolution</h3>
+                    <p>Examining the changing competencies required for accounting professionals in an AI-augmented workplace.</p>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Professional Adaptability</h3>
+                    <p>Analyzing how accounting professionals are adapting to technological changes and evolving their roles.</p>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Ethical Challenges</h3>
+                    <p>Exploring issues such as data privacy, algorithmic fairness, and the potential for job displacement in the accounting sector.</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 40px; text-align: center;">
+                The findings are positioned to offer valuable insights not only for the accounting industry but also for educational institutions, 
+                policymakers, and regulatory bodies, thereby making a significant contribution to the field.
+            </p>
+            <div style="text-align: center;">
+                <a href="#methodology" class="button">Learn More</a>
+            </div>
         </div>
-    </main>
-    
+    </section>
+
+    <section id="methodology">
+        <div class="container">
+            <h2>Research Methodology</h2>
+            
+            <div class="methodology">
+                <p>
+                    This research adopts a mixed-methods approach, integrating both qualitative and quantitative data collection techniques. 
+                    Qualitative data will be obtained through in-depth interviews with accounting professionals, while quantitative 
+                    insights will be sourced from questionnaires distributed across the UK accounting sector.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>These educational tools are designed for learning purposes only. Always consult with a qualified financial professional for actual accounting advice.</p>
-        <p>&copy; <span id="current-year"></span> Financial Education Tools</p>
-        <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+        <div class="container">
+            <p>&copy; 2024 Research Project | Royal Society of Edinburgh Small Research Grant</p>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Apple-style reveal animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const grantInfo = document.querySelector('.grant-info');
+            const headerGradient = document.querySelector('header::before');
+            
+            // Floating animation trigger
+            grantInfo.style.animationPlayState = 'running';
+            
+            // Parallax effect
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                if(headerGradient) {
+                    headerGradient.style.transform = `rotate(-15deg) translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+        
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+        
+            document.querySelectorAll('.area-card, .profile-image').forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
+
+@keyframes float {
+    0%, 100% { transform: rotate(-15deg) translateX(0); }
+    50% { transform: rotate(-13deg) translateX(20px); }
+}
