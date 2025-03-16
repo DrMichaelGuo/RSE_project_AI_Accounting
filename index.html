@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #0071e3;
@@ -318,13 +320,152 @@
             background-color: var(--accent-color);
             transform: scale(1.02);
         }
+
+        /* Icon styling */
+        .icon-container {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            background: rgba(0,113,227,0.08);
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .area-card:hover .icon-container {
+            transform: scale(1.1);
+            background: rgba(0,113,227,0.15);
+        }
+        
+        /* Background pattern */
+        .pattern-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230071e3' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        /* Visual divider */
+        .visual-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .visual-divider span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin: 0 6px;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+        
+        .visual-divider span:nth-child(2) {
+            animation-delay: 0.2s;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .visual-divider span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        
+        /* Methodology visualization */
+        .methodology-visual {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .method-step {
+            text-align: center;
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .method-step::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -20px;
+            width: 20px;
+            height: 2px;
+            background: var(--border-color);
+        }
+        
+        .method-step:last-child::after {
+            display: none;
+        }
+        
+        .method-icon {
+            font-size: 26px;
+            color: var(--primary-color);
+            background: rgba(0,113,227,0.08);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .method-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        /* Make sections relative for pattern background */
+        section {
+            position: relative;
+        }
+        
+        /* Ensure content is above pattern */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Pulsing animation for button */
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0,113,227,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0,113,227,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,113,227,0); }
+        }
+        
+        .button {
+            animation: buttonPulse 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: rotate(-15deg) translateX(0); }
+            50% { transform: rotate(-13deg) translateX(20px); }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
             <div class="grant-info">Royal Society of Edinburgh Small Research Grant</div>
-            <h1>The Impact of Artificial Intelligence on the Future of Accounting in the UK</h1>
+            <h1>The Impact of AI on the Future of Accounting in the UK</h1>
             <p>An Investigation into Evolving Roles and Ethical Challenges</p>
         </div>
     </header>
@@ -333,7 +474,7 @@
         <div class="container">
             <div class="pi-container">
                 <div class="pi-image">
-                    <img src="https://research-portal.uws.ac.uk/files-asset/54620054/Photo_Michael_Guo_Circle.png?w=320&f=webp" alt="Dr. Michael Guo" class="profile-image">
+                    <img src="Photo_Michael_Guo_Circle.webp" alt="Dr. Michael Guo" class="profile-image">
                 </div>
                 <div class="pi-info">
                     <h2>Principal Investigator</h2>
@@ -345,113 +486,183 @@
     </section>
 
     <section id="summary">
+        <div class="pattern-bg"></div>
         <div class="container">
             <h2>Research Summary</h2>
             <p>
-                This research aims to examine the transformative impact of Artificial Intelligence (AI) on the UK's accounting sector. 
+                This research aims to examine the impact of Artificial Intelligence (AI) on the UK's accounting sector. 
                 Employing a mixed-methods approach, the research addresses a knowledge gap in empirical studies by investigating 
                 the first-hand experiences of accounting professionals navigating this technological shift.
             </p>
-            
-            <div class="key-areas">
+            <div class="key-areas" style="grid-template-columns: repeat(4, 1fr); gap: 20px;">
                 <div class="area-card">
+                    <div class="icon-container">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                     <h3>Operational Efficiency</h3>
                     <p>Investigating how AI technologies are enhancing productivity and streamlining accounting processes in UK firms.</p>
                 </div>
                 
                 <div class="area-card">
+                    <div class="icon-container">
+                        <i class="fas fa-brain"></i>
+                    </div>
                     <h3>Skill Set Evolution</h3>
                     <p>Examining the changing competencies required for accounting professionals in an AI-augmented workplace.</p>
                 </div>
                 
                 <div class="area-card">
+                    <div class="icon-container">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
                     <h3>Professional Adaptability</h3>
-                    <p>Analyzing how accounting professionals are adapting to technological changes and evolving their roles.</p>
+                    <p>Analysing how accounting professionals are adapting to technological changes and evolving their roles.</p>
                 </div>
                 
                 <div class="area-card">
+                    <div class="icon-container">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
                     <h3>Ethical Challenges</h3>
                     <p>Exploring issues such as data privacy, algorithmic fairness, and the potential for job displacement in the accounting sector.</p>
                 </div>
             </div>
             
-            <p style="margin-top: 40px; text-align: center;">
-                The findings are positioned to offer valuable insights not only for the accounting industry but also for educational institutions, 
-                policymakers, and regulatory bodies, thereby making a significant contribution to the field.
-            </p>
+
             <div style="text-align: center;">
                 <a href="#methodology" class="button">Learn More</a>
             </div>
         </div>
     </section>
 
-    <section id="implications">
-        <div class="container">
-            <h2>Key Implications</h2>
-            
-            <div class="implications-container">
-                <div class="implications-section">
-                    <h3>For Accounting Professionals</h3>
-                    
-                    <div class="key-areas">
-                        <div class="area-card">
-                            <h3>Shift in Work Nature</h3>
-                            <p>A fundamental shift from manual and repetitive tasks towards more strategic and analytical roles. AI and automation will take over bookkeeping, data entry, and some reporting functions, allowing professionals to focus on financial analysis, forecasting, risk management, and providing business insights.</p>
-                        </div>
-                        
-                        <div class="area-card">
-                            <h3>Continuous Upskilling</h3>
-                            <p>The critical need for continuous upskilling and development of new competencies, encompassing both technical and "soft" skills. Professionals must become digitally aware and savvy, understanding how to use AI tools and interpret their outputs, while strengthening communication, collaboration, and storytelling abilities.</p>
-                        </div>
-                        
-                        <div class="area-card">
-                            <h3>Ethical Responsibility</h3>
-                            <p>Increased responsibility for ethical considerations and risk management associated with AI adoption. Professionals must address data privacy, security, potential algorithmic biases, and ensure accuracy of AI-generated outputs. The profession must maintain trust and integrity, using AI responsibly while critically reviewing its outputs.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="implications-section" style="margin-top: 60px;">
-                    <h3>For Accounting Students</h3>
-                    
-                    <div class="key-areas">
-                        <div class="area-card">
-                            <h3>Communication Skills</h3>
-                            <p>The imperative to develop strong communication and interpersonal skills alongside technical accounting knowledge. While understanding accounting principles remains necessary, the ability to articulate financial information clearly to diverse audiences is increasingly vital. Students should focus on explaining concepts to non-financial people and building advisory relationships.</p>
-                        </div>
-                        
-                        <div class="area-card">
-                            <h3>Lifelong Learning</h3>
-                            <p>The necessity to embrace a mindset of lifelong learning and proactively seek opportunities to understand and utilize new technologies, particularly AI. Students should prepare for continuous change and the need to learn new skills throughout their careers, becoming familiar with AI tools and their applications in accounting and finance.</p>
-                        </div>
-                        
-                        <div class="area-card">
-                            <h3>Future Opportunities</h3>
-                            <p>The significant opportunity to shape the future of the accounting profession by leveraging AI as a tool. Rather than fearing job displacement, students should see AI as a means to automate mundane tasks, freeing them to focus on more strategic and impactful work, including emerging areas like sustainability accounting and becoming trusted advisors who drive business value.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#methodology" class="button">Research Methodology</a>
-            </div>
-        </div>
-    </section>
 
     <section id="methodology">
+        <div class="pattern-bg"></div>
         <div class="container">
             <h2>Research Methodology</h2>
+            
+            <div class="methodology-visual">
+                <div class="method-step">
+                    <div class="method-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="method-title">Literature Review</div>
+                </div>
+                <div class="method-step">
+                    <div class="method-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="method-title">Interviews</div>
+                </div>
+                <div class="method-step">
+                    <div class="method-icon">
+                        <i class="fas fa-poll"></i>
+                    </div>
+                    <div class="method-title">Questionnaires</div>
+                </div>
+                <div class="method-step">
+                    <div class="method-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="method-title">Data Analysis</div>
+                </div>
+            </div>
             
             <div class="methodology">
                 <p>
                     This research adopts a mixed-methods approach, integrating both qualitative and quantitative data collection techniques. 
-                    Qualitative data will be obtained through in-depth interviews with accounting professionals, while quantitative 
-                    insights will be sourced from questionnaires distributed across the UK accounting sector.
+                    
                 </p>
             </div>
         </div>
     </section>
+
+    
+    <section id="Emerging Insights">
+        <div class="pattern-bg"></div>
+        <div class="container">
+            <h2>Emerging Insights</h2>
+            
+            <div class="implications-container">
+                <div class="implications-section">
+                    <h3>Implications for Accounting Professionals</h3>
+                    
+                    <div class="key-areas">
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>Shift in Work Nature</h3>
+                            <p>A fundamental shift from manual and repetitive tasks towards more strategic and analytical roles. </p>
+                        </div>
+                        
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Continuous Upskilling</h3>
+                            <p>The critical need for continuous upskilling and development of new competencies, encompassing both technical and "soft" skills. </p>
+                        </div>
+                        
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Ethical Responsibility</h3>
+                            <p>Increased responsibility for ethical considerations and risk management associated with AI adoption.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="visual-divider">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <div class="implications-section">
+                    <h3>Advice for Accounting Students</h3>
+                    
+                    <div class="key-areas">
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Develop Digital Skills</h3>
+                            <p>Learn how to use AI and analytics in accounting tasks; it's key for future roles.</p>
+                        </div>
+                        
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <h3>Adapt to New Roles</h3>
+                            <p>Focus on analysis, decision-making, and sustainability as routine tasks become automated.</p>
+                        </div>
+                        
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Continuous Learning</h3>
+                            <p>Stay curious, build professional judgement, and keep learning AI and ESG-related skills.</p>
+                        </div>
+
+                        <div class="area-card">
+                            <div class="icon-container">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Strengthen Communication</h3>
+                            <p>Clear reporting and communication are essential alongside technical knowledge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+   
 
     <footer>
         <div class="container">
@@ -501,13 +712,19 @@
                 });
             }, observerOptions);
         
-            document.querySelectorAll('.area-card, .profile-image').forEach(el => observer.observe(el));
+            document.querySelectorAll('.area-card, .profile-image, .method-step').forEach(el => {
+                // Set initial state for animation
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                observer.observe(el);
+            });
+            
+            // Staggered animation for methodology steps
+            const methodSteps = document.querySelectorAll('.method-step');
+            methodSteps.forEach((step, index) => {
+                step.style.transitionDelay = `${index * 0.1}s`;
+            });
         });
     </script>
 </body>
 </html>
-
-@keyframes float {
-    0%, 100% { transform: rotate(-15deg) translateX(0); }
-    50% { transform: rotate(-13deg) translateX(20px); }
-}
